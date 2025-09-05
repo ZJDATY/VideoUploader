@@ -65,36 +65,26 @@
 
 项目使用 Apache Commons Net 库处理 FTP 连接，已在 `build.gradle` 中配置：
 
-gradle
 
-复制
-
-下载
 
 ```
-<span class="token keyword">dependencies</span> <span class="token punctuation">{</span>
-    <span class="token keyword">implementation</span> <span class="token string">'commons-net:commons-net:3.6'</span>
-<span class="token punctuation">}</span>
+dependencies {
+    implementation 'commons-net:commons-net:3.6'
+}
 ```
 
 ### 4\. 配置权限
 
 确保 AndroidManifest.xml 中包含以下权限：
 
-xml
 
-复制
-
-下载
-
-运行
 
 ```
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>android.permission.INTERNET<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>android.permission.ACCESS_NETWORK_STATE<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>android.permission.READ_EXTERNAL_STORAGE<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>android.permission.WRITE_EXTERNAL_STORAGE<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>android.permission.FOREGROUND_SERVICE<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 ```
 
 ### 5\. 构建和运行
@@ -133,11 +123,6 @@ xml
 
 ## 项目结构
 
-text
-
-复制
-
-下载
 
 ```
 app/
