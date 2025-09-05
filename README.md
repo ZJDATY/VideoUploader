@@ -69,7 +69,7 @@
 
 ```
 dependencies {
-    implementation 'commons-net:commons-net:3.6'
+    implementation 'commons-net:commons-net:3.9.0'
 }
 ```
 
@@ -80,11 +80,11 @@ dependencies {
 
 
 ```
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 ```
 
 ### 5\. 构建和运行
@@ -114,11 +114,9 @@ dependencies {
         
     -   **FTP 密码**：FTP 登录密码
         
-3.  点击"启动服务"开始监控和上传
+3.  首次启动点击“启动周期扫描”，并授权存储权限。
     
 4.  将视频文件放入指定文件夹，应用会自动上传并删除本地文件
-    
-5.  点击"停止服务"可停止监控
     
 
 ## 项目结构
@@ -126,15 +124,15 @@ dependencies {
 
 ```
 app/
-├── src/
-│   └── main/
-│       ├── java/com/example/ftpuploader/
-│       │   ├── MainActivity.java      # 主界面和用户交互
-│       │   └── UploadService.java     # 后台服务和FTP上传逻辑
-│       ├── res/
-│       │   └── layout/
-│       │       └── activity_main.xml  # 用户界面布局
-│       └── AndroidManifest.xml        # 应用清单和权限声明
+ ├─ build.gradle
+ └─ src/main/
+    ├─ AndroidManifest.xml
+    ├─ java/com/example/videouploader/
+    │   ├─ MainActivity.java
+    │   ├─ UploadConfig.java
+    │   ├─ UploadWorker.java
+    │   └─ BootReceiver.java
+    └─ res/layout/activity_main.xml
 ```
 
 ## 注意事项
@@ -143,7 +141,7 @@ app/
     
 2.  FTP 服务器必须支持被动模式
     
-3.  服务默认每分钟检查一次新文件
+3.  服务默认每15分钟检查一次新文件
     
 4.  为确保服务在后台持续运行，建议将应用添加到系统的电池优化白名单中
     
@@ -152,15 +150,14 @@ app/
 
 ## 自定义和扩展
 
--   修改 `UploadService.java` 中的检查间隔（当前为 60 秒）
+-   修改 `UploadWorker.java` 中的检查间隔（当前为 15 分）
     
 -   添加更多视频格式支持（修改文件过滤逻辑）
     
 -   实现上传进度通知
     
 -   添加上传失败重试机制
-    
--   支持多个监控文件夹
+
     
 
 ## 故障排除
@@ -176,7 +173,7 @@ app/
 
 ## 许可证
 
-本项目采用 MIT 许可证 - 查看 [LICENSE](https://LICENSE) 文件了解详情
+本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情
 
 ## 贡献
 
